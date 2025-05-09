@@ -12,8 +12,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.dwi.restapi.TestDataUtil;
-import com.dwi.restapi.domain.Author;
-import com.dwi.restapi.domain.Book;
+import com.dwi.restapi.domain.entities.AuthorEntity;
+import com.dwi.restapi.domain.entities.BookEntity;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -28,10 +28,10 @@ public class BookRepositoryIntegrationTests {
 
     @Test
     public void testThatBookCanBeCreatedAndRecalled() {
-        Author author = TestDataUtil.createTestAuthorA();
-        Book book = TestDataUtil.createTestBookA(author);
+        AuthorEntity author = TestDataUtil.createTestAuthorA();
+        BookEntity book = TestDataUtil.createTestBookA(author);
         underTest.save(book);
-        Optional<Book> result = underTest.findById(book.getIsbn());
+        Optional<BookEntity> result = underTest.findById(book.getIsbn());
         assertThat(result).isPresent();
         assertThat(result.get()).isEqualTo(book);
     }

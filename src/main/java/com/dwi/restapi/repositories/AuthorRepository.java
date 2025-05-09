@@ -3,11 +3,11 @@ package com.dwi.restapi.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.dwi.restapi.domain.Author;
+import com.dwi.restapi.domain.entities.AuthorEntity;
 
 @Repository
-public interface AuthorRepository extends CrudRepository<Author, Long> {
+public interface AuthorRepository extends CrudRepository<AuthorEntity, Long> {
 
-    Iterable<Author> ageLessThan(int age);
+    Iterable<AuthorEntity> ageLessThan(int age);
 
 }
