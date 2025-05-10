@@ -1,7 +1,11 @@
 package com.dwi.restapi.controllers;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +28,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @PutMapping("/books/{isbn}")
+    @PutMapping(path = "/books/{isbn}")
     public ResponseEntity<BookDto> createBook(
             @PathVariable("isbn") String isbn,
             @RequestBody BookDto bookDto) {
@@ -32,5 +36,13 @@ public class BookController {
         BookEntity savedBookEntity = bookService.createBook(isbn, BookEntity);
         BookDto savedBookDto = bookMapper.mapTo(savedBookEntity);
         return new ResponseEntity<>(savedBookDto, HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/books")
+    public List<BookDto> listBooks() {
+        List<BookEntity> books = bookService.findAll();
+        return books.stream()
+                .map(bookMapper::mapTo)
+                .collect(Collectors.toList());
     }
 }
