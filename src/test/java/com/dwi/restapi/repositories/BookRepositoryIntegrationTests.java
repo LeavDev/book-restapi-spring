@@ -29,7 +29,7 @@ public class BookRepositoryIntegrationTests {
     @Test
     public void testThatBookCanBeCreatedAndRecalled() {
         AuthorEntity author = TestDataUtil.createTestAuthorA();
-        BookEntity book = TestDataUtil.createTestBookA(author);
+        BookEntity book = TestDataUtil.createTestBookEntityA(author);
         underTest.save(book);
         Optional<BookEntity> result = underTest.findById(book.getIsbn());
         assertThat(result).isPresent();

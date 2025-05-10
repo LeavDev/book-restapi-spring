@@ -1,5 +1,7 @@
 package com.dwi.restapi;
 
+import com.dwi.restapi.domain.dto.AuthorDto;
+import com.dwi.restapi.domain.dto.BookDto;
 import com.dwi.restapi.domain.entities.AuthorEntity;
 import com.dwi.restapi.domain.entities.BookEntity;
 
@@ -31,7 +33,7 @@ public final class TestDataUtil {
                 .build();
     }
 
-    public static BookEntity createTestBookA(final AuthorEntity author) {
+    public static BookEntity createTestBookEntityA(final AuthorEntity author) {
         return BookEntity.builder()
                 .isbn("978-1-2345-6789-0")
                 .title("The Shadow in the Attic")
@@ -51,6 +53,14 @@ public final class TestDataUtil {
         return BookEntity.builder()
                 .isbn("978-1-2345-6789-2")
                 .title("The Last Ember")
+                .author(author)
+                .build();
+    }
+
+    public static BookDto createTestBookDtoA(final AuthorDto author) {
+        return BookDto.builder()
+                .isbn("978-1-2345-6789-0")
+                .title("The Shadow in the Attic")
                 .author(author)
                 .build();
     }
