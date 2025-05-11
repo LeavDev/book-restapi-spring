@@ -40,10 +40,10 @@ public class AuthorRepositoryIntegrationTests {
         AuthorEntity authorA = TestDataUtil.createTestAuthorEntityA();
         authorA.setId(null);
         underTest.save(authorA);
-        AuthorEntity authorB = TestDataUtil.createTestAuthorB();
+        AuthorEntity authorB = TestDataUtil.createTestAuthorEntityB();
         authorB.setId(null);
         underTest.save(authorB);
-        AuthorEntity authorC = TestDataUtil.createTestAuthorC();
+        AuthorEntity authorC = TestDataUtil.createTestAuthorEntityC();
         authorC.setId(null);
         underTest.save(authorC);
 
@@ -58,10 +58,10 @@ public class AuthorRepositoryIntegrationTests {
         AuthorEntity testAuthorA = TestDataUtil.createTestAuthorEntityA();
         testAuthorA.setId(null);
         underTest.save(testAuthorA);
-        AuthorEntity testAuthorB = TestDataUtil.createTestAuthorB();
+        AuthorEntity testAuthorB = TestDataUtil.createTestAuthorEntityB();
         testAuthorB.setId(null);
         underTest.save(testAuthorB);
-        AuthorEntity testAuthorC = TestDataUtil.createTestAuthorC();
+        AuthorEntity testAuthorC = TestDataUtil.createTestAuthorEntityC();
         testAuthorC.setId(null);
         underTest.save(testAuthorC);
 
