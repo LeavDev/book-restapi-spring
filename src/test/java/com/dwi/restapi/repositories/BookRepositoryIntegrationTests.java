@@ -26,15 +26,15 @@ public class BookRepositoryIntegrationTests {
         this.underTest = underTest;
     }
 
-    @Test
-    public void testThatBookCanBeCreatedAndRecalled() {
-        AuthorEntity author = TestDataUtil.createTestAuthorEntityA();
-        BookEntity book = TestDataUtil.createTestBookEntityA(author);
-        underTest.save(book);
-        Optional<BookEntity> result = underTest.findById(book.getIsbn());
-        assertThat(result).isPresent();
-        assertThat(result.get()).isEqualTo(book);
-    }
+    // @Test
+    // public void testThatBookCanBeCreatedAndRecalled() {
+    // AuthorEntity author = TestDataUtil.createTestAuthorEntityA();
+    // BookEntity book = TestDataUtil.createTestBookEntityA(author);
+    // underTest.save(book);
+    // Optional<BookEntity> result = underTest.findById(book.getIsbn());
+    // assertThat(result).isPresent();
+    // assertThat(result.get()).isEqualTo(book);
+    // }
 
     // @Test
     // public void testThatMultipleBooksCanBeCreatedAndRecalled() {

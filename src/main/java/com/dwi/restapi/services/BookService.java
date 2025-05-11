@@ -6,9 +6,11 @@ import java.util.Optional;
 import com.dwi.restapi.domain.entities.BookEntity;
 
 public interface BookService {
-    BookEntity createBook(String isbn, BookEntity book);
+    BookEntity createUpdateBook(String isbn, BookEntity book);
 
     List<BookEntity> findAll();
 
     Optional<BookEntity> findOne(String isbn);
+
+    boolean isExists(String isbn);
 }
