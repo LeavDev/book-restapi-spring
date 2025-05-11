@@ -21,20 +21,27 @@ import com.dwi.restapi.domain.entities.BookEntity;
 public class BookRepositoryIntegrationTests {
     private BookRepository underTest;
 
+    private AuthorRepository authorRepository;
+
     @Autowired
-    public BookRepositoryIntegrationTests(BookRepository underTest) {
+    public BookRepositoryIntegrationTests(BookRepository underTest, AuthorRepository authorRepository) {
         this.underTest = underTest;
+        this.authorRepository = authorRepository;
     }
 
-    // @Test
-    // public void testThatBookCanBeCreatedAndRecalled() {
-    // AuthorEntity author = TestDataUtil.createTestAuthorEntityA();
-    // BookEntity book = TestDataUtil.createTestBookEntityA(author);
-    // underTest.save(book);
-    // Optional<BookEntity> result = underTest.findById(book.getIsbn());
-    // assertThat(result).isPresent();
-    // assertThat(result.get()).isEqualTo(book);
-    // }
+    @Test
+    public void testThatBookCanBeCreatedAndRecalled() {
+        AuthorEntity author = TestDataUtil.createTestAuthorEntityA();
+        author.setId(null);
+        AuthorEntity savedAuthor = authorRepository.save(author);
+
+        BookEntity book = TestDataUtil.createTestBookEntityA(savedAuthor);
+        underTest.save(book);
+
+        Optional<BookEntity> result = underTest.findById(book.getIsbn());
+        assertThat(result).isPresent();
+        assertThat(result.get()).isEqualTo(book);
+    }
 
     // @Test
     // public void testThatMultipleBooksCanBeCreatedAndRecalled() {
