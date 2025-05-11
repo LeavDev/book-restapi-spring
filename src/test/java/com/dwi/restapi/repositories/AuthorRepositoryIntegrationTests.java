@@ -27,7 +27,7 @@ public class AuthorRepositoryIntegrationTests {
 
     @Test
     public void testThatAuthorCanBeCreatedAndRecalled() {
-        AuthorEntity author = TestDataUtil.createTestAuthorA();
+        AuthorEntity author = TestDataUtil.createTestAuthorEntityA();
         author.setId(null);
         underTest.save(author);
         Optional<AuthorEntity> result = underTest.findById(author.getId());
@@ -37,7 +37,7 @@ public class AuthorRepositoryIntegrationTests {
 
     @Test
     public void testThatMultipleAuthorCanBeCreatedAndRecalled() {
-        AuthorEntity authorA = TestDataUtil.createTestAuthorA();
+        AuthorEntity authorA = TestDataUtil.createTestAuthorEntityA();
         authorA.setId(null);
         underTest.save(authorA);
         AuthorEntity authorB = TestDataUtil.createTestAuthorB();
@@ -55,7 +55,7 @@ public class AuthorRepositoryIntegrationTests {
 
     @Test
     public void testThatGetAuthorsWithAgeLessThan() {
-        AuthorEntity testAuthorA = TestDataUtil.createTestAuthorA();
+        AuthorEntity testAuthorA = TestDataUtil.createTestAuthorEntityA();
         testAuthorA.setId(null);
         underTest.save(testAuthorA);
         AuthorEntity testAuthorB = TestDataUtil.createTestAuthorB();
